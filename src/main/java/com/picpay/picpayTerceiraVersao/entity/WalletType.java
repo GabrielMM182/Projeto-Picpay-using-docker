@@ -35,7 +35,7 @@ public class WalletType {
     }
 
     public enum Enum {
-        USER( "user"),
+        USER("user"),
         MERCHANT("merchant");
 
         Enum(String description) {
