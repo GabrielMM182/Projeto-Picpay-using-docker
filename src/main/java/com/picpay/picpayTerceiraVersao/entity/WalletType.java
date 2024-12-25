@@ -13,6 +13,10 @@ public class WalletType {
     private String description;
 
     public WalletType() {
+
+    }
+
+    public WalletType(Long id, String description) {
     }
 
     public WalletType(String description) {
