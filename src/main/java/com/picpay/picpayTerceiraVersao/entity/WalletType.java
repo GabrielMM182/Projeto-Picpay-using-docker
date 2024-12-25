@@ -14,6 +14,10 @@ public class WalletType {
 
     public WalletType() {
     }
+
+    public WalletType(String description) {
+        this.description = description;
+    }
     public Long getId() {
         return id;
     }
@@ -28,5 +32,20 @@ public class WalletType {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public enum Enum {
+        USER( "user"),
+        MERCHANT("merchant");
+
+        Enum(String description) {
+            this.description = description;
+        }
+
+        private final String description;
+
+        public WalletType get() {
+            return new WalletType(description);
+        }
     }
 }
