@@ -31,8 +31,8 @@ public class Wallet {
 
     private BigDecimal balance = BigDecimal.ZERO; // previnir algum bug de comecar como null ao inves de zero
 
-    @ManyToOne
-    @JoinColumn(name = "wallet_type_id")
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "wallet_type_id", nullable = false)
     private WalletType walletType;
 
     public Wallet() {

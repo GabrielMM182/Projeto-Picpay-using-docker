@@ -17,6 +17,14 @@ public class DataLoader implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception{
-        Arrays.stream(WalletType.Enum.values()).forEach(walletType -> walletTypeRepository.save(walletType.get()));
+        if (walletTypeRepository.count() == 0) {
+            // Caso não exista, cria o WalletType
+            WalletType userWalletType = new WalletType("user");
+            WalletType merchantWalletType = new WalletType("merchant");
+
+            walletTypeRepository.save(userWalletType);
+            walletTypeRepository.save(merchantWalletType);
+        }
+        //Arrays.stream(WalletType.Enum.values()).forEach(walletType -> walletTypeRepository.save(walletType.get()));
     }
 }
