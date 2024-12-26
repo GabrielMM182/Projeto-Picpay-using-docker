@@ -20,6 +20,7 @@ private final WalletService walletService;
     @PostMapping("/wallets")
     public ResponseEntity<Wallet> createWallet(@RequestBody CreateWalletDto dto) {
 
-        return null;
+      var wallet = walletService.createWallet(dto);
+        return ResponseEntity.ok(wallet);
     }
 }
