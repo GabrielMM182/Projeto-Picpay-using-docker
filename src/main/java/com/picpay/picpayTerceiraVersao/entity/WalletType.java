@@ -16,12 +16,9 @@ public class WalletType {
 
     }
 
-    public WalletType(Long id, String description) {
-    }
 
     public WalletType(String description) {
-        this.description = description;
-    }
+        this.description = description;    }
     public Long getId() {
         return id;
     }
@@ -47,9 +44,10 @@ public class WalletType {
         }
 
         private final String description;
-
         public WalletType get() {
             return new WalletType(description);
         }
     }
+
+
 }
