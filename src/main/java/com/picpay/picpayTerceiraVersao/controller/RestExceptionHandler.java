@@ -31,6 +31,6 @@ public class RestExceptionHandler {
         return pb;
     }
 
-    public record InvalidParams(String name, String reason) {
+    private record InvalidParams(String name, String reason) {
     }
 }
