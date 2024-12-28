@@ -1,6 +1,7 @@
 package com.picpay.picpayTerceiraVersao.service;
 
 import com.picpay.picpayTerceiraVersao.client.AuthorizationClient;
+import com.picpay.picpayTerceiraVersao.controller.dto.TransferDto;
 import com.picpay.picpayTerceiraVersao.entity.Transfer;
 import com.picpay.picpayTerceiraVersao.exception.PicPayException;
 import org.springframework.stereotype.Service;
@@ -16,7 +17,7 @@ public class AuthorizationService {
         this.authorizationClient = authorizationClient;
     }
 
-    public boolean isAuthorized(Transfer transfer) {
+    public boolean isAuthorized(TransferDto transfer) {
         var resp = authorizationClient.isAuthorized();
 
         if (resp.getStatusCode().isError()) {
