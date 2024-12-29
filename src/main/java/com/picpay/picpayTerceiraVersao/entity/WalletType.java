@@ -56,11 +56,12 @@ public class WalletType {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         WalletType that = (WalletType) o;
-        return Objects.equals(id, that.id) && Objects.equals(description, that.description);
+        return Objects.equals(description, that.description);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, description);
+        return Objects.hash(description);
     }
 }
+
