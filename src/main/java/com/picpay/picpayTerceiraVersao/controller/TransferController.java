@@ -5,9 +5,10 @@ import com.picpay.picpayTerceiraVersao.entity.Transfer;
 import com.picpay.picpayTerceiraVersao.service.TransferService;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.UUID;
 
 @RestController
 public class TransferController {
@@ -25,4 +26,15 @@ public class TransferController {
 
         return ResponseEntity.ok(resp);
     }
+
+    @GetMapping("/transfer/{uuid}")
+    public ResponseEntity<Transfer> getTransfer(@PathVariable UUID uuid) {
+        return ResponseEntity.ok(transferService.getTransfer(uuid));
+    }
+
+    @GetMapping("/transfer")
+    public ResponseEntity<List<Transfer>> getListTransfer() {
+        return ResponseEntity.ok(transferService.getListTransfer());
+    }
+
 }
