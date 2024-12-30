@@ -3,15 +3,14 @@ package com.picpay.picpayTerceiraVersao.service;
 import com.picpay.picpayTerceiraVersao.controller.dto.TransferDto;
 import com.picpay.picpayTerceiraVersao.entity.Transfer;
 import com.picpay.picpayTerceiraVersao.entity.Wallet;
-import com.picpay.picpayTerceiraVersao.exception.InsufficientBalanceException;
-import com.picpay.picpayTerceiraVersao.exception.TransferNotAllowedForWalletTypeException;
-import com.picpay.picpayTerceiraVersao.exception.TransferNotAuthorizedException;
-import com.picpay.picpayTerceiraVersao.exception.WalletNotFoundException;
+import com.picpay.picpayTerceiraVersao.exception.*;
 import com.picpay.picpayTerceiraVersao.repository.TransferRepository;
 import com.picpay.picpayTerceiraVersao.repository.WalletRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
 
 @Service
@@ -73,4 +72,17 @@ public class TransferService {
         }
 
     }
+    public Transfer getTransfer(UUID uuid) {
+        return transferRepository.findById(uuid)
+                .orElseThrow(() -> new TransferNotFoundException(uuid));
+    }
+
+    public List<Transfer> getListTransfer() {
+        List<Transfer> transfers = transferRepository.findAll();
+        if (!transfers.isEmpty()) {
+            return transfers;
+        }
+        throw new TransferIsEmpty();
+    }
+
 }

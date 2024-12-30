@@ -1,14 +1,18 @@
 package com.picpay.picpayTerceiraVersao.service;
 
 import com.picpay.picpayTerceiraVersao.controller.dto.CreateWalletDto;
+import com.picpay.picpayTerceiraVersao.entity.Transfer;
 import com.picpay.picpayTerceiraVersao.entity.Wallet;
 import com.picpay.picpayTerceiraVersao.entity.WalletType;
 import com.picpay.picpayTerceiraVersao.exception.InvalidWalletType;
+import com.picpay.picpayTerceiraVersao.exception.TransferNotFoundException;
 import com.picpay.picpayTerceiraVersao.exception.WalletDataAlreadyExistsException;
 import com.picpay.picpayTerceiraVersao.repository.WalletRepository;
 import com.picpay.picpayTerceiraVersao.repository.WalletTypeRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.UUID;
 import java.util.stream.Stream;
 
 @Service
@@ -52,4 +56,5 @@ public class WalletService {
 
         return walletRepository.save(wallet);
     }
+
 }
